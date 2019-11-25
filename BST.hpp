@@ -151,7 +151,7 @@ public:
 			{
 				temp = find(temp, data);
 				here << "->right(" << temp->getData() << ")";
-				nothere << "->left(" << temp->getData() << ")";
+				nothere << "->right(" << temp->getData() << ")";
 				found = 1;
 			}
 		}
