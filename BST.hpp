@@ -84,8 +84,9 @@ public:
 		}
 	}
 
-
-	std::string search(T data) 
+	
+	
+	/*std::string search(T data) 
 	{
 		int found = 0;
 		Node<T>* temp;
@@ -122,14 +123,55 @@ public:
 		}
 
 
+	}*/
+	std::string search(T data)
+	{
+		std::cout << "SEARCH==================================" << std::endl;
+		int found = 0;
+		int notfound = 0;
+		Node<T>* temp;
+		temp = head;
+
+		if (temp->getData() == data)
+		{
+			std::cout << "ROOT-------------------------------" << std::endl;
+			here << "Found: " << "root(" << temp->getData() << ")";
+			nothere << "Found: " << "root(" << temp->getData() << ")";
+			found = 1;
+		}
+		else {
+			if (temp->getData() > data) //left bit
+			{
+				temp = find(temp, data);
+				here << "->left(" << temp->getData() << ")";
+				nothere << "->left(" << temp->getData() << ")";
+				found = 1;
+			}
+			else if (temp->getData() < data) //right bit
+			{
+				temp = find(temp, data);
+				here << "->right(" << temp->getData() << ")";
+				nothere << "->left(" << temp->getData() << ")";
+				found = 1;
+			}
+		}
+		if (contains(data))
+		{
+			std::cout << "PRINT" << std::endl;
+			return here.str();
+		}
+		else
+		{
+			return nothere.str();
+		}
 	}
 
 
 private:
 	int C = 0;
 	Node<T>* head;
-	std::stringstream here;
 	std::stringstream nothere;
+	std::stringstream here;
 	std::string path;
 	
 };
